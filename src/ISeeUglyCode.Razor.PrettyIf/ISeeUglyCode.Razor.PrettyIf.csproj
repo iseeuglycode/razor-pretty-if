@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>ISeeUglyCode.Razor.PrettyIf</PackageId>
+    <Authors>david@iseeuglycode.org</Authors>
+    <Company>ISeeUglyCode</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/iseeuglycode/pretty-if</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/iseeuglycode/pretty-if.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>razor;taghelper;taghelpers;aspnetcore;mvc;conditional;if-statement;ISeeUglyCode</PackageTags>
+
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.*" PrivateAssets="All"/>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+</Project>

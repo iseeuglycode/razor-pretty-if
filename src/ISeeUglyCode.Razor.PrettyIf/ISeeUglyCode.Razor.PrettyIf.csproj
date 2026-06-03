@@ -8,8 +8,8 @@
     <Authors>david@iseeuglycode.org</Authors>
     <Company>ISeeUglyCode</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/iseeuglycode/pretty-if</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/iseeuglycode/pretty-if.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/iseeuglycode/razor-pretty-if</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/iseeuglycode/razor-pretty-if</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>razor;taghelper;taghelpers;aspnetcore;mvc;conditional;if-statement;ISeeUglyCode</PackageTags>
 

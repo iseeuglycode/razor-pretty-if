@@ -27,20 +27,44 @@ namespace ISeeUglyCode.Razor.PrettyIf;
 ///        pretty-if="@(!string.IsNullOrEmpty(Model.HRef))"
 ///        pretty-children&gt;@Model.Text&lt;/a&gt;
 /// &lt;/div&gt;
+/// 
+/// // 4. Alternative tag name with pretty-else
+/// // This is useful when everything is the same except the name of the HTML tag.
+/// // This isn't an alternative to the normal if / else construct of cshtml,
+/// // but rather a way of avoiding code duplication in cases where the tag name is the only
+/// // varying factor.
+/// &lt;ol
+///      pretty-if="@ordered"
+///      pretty-else="ul"&gt;
+///     @foreach (string item in myList)
+///     {
+///         &lt;li&gt;@item&lt;/li&gt;
+///     }
+/// &lt;/ol&gt;
 /// </code>
 /// </summary>
 [HtmlTargetElement(Attributes = "pretty-if")]
 public class PrettyIfTagHelper : TagHelper
 {
     /// <summary>
-    /// If true, the tag renders normally. If false, the tag is suppressed.
+    /// If true, the tag renders normally. If false, AND pretty-else is empty,
+    /// then the tag is removed.
     /// </summary>
     [HtmlAttributeName("pretty-if")]
     public bool PrettyIf { get; set; } = true;
 
     /// <summary>
-    /// If pretty-if is false AND this is true, only the tag is removed, but children are kept.
-    /// If both are false, the entire element and its children are removed.
+    /// If pretty-if is false, the tag name will change into the name defined
+    /// here.
+    /// </summary>
+    [HtmlAttributeName("pretty-else")]
+    public string PrettyElse { get; set; } = string.Empty;
+
+    /// <summary>
+    /// If pretty-if is false, AND pretty-else is empty, AND this is true,
+    /// then only the tag is removed, while children are kept.
+    /// If pretty-if is false, AND pretty-else is empty, AND this is false,
+    /// then the entire element and its children are removed.
     /// </summary>
     [HtmlAttributeName("pretty-children")]
     public bool PrettyChildren { get; set; } = false;
@@ -68,7 +92,11 @@ public class PrettyIfTagHelper : TagHelper
             //
         }
 
-        if (PrettyChildren)
+        if (!string.Empty.Equals(PrettyElse))
+        {
+            output.TagName = PrettyElse;
+        }
+        else if (PrettyChildren)
         {
             output.TagName = null;
         }

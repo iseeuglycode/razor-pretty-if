@@ -60,6 +60,20 @@ You can pass any C# boolean expression into the attribute.
 ### 4. Conditional output of the child elements
 The `pretty-children` attribute can be set to a boolean expression as well. It defaults to `false`, and is ignored if `pretty-if` is `true`.
 
+### 5. Alternative tag name if the initial condition is false
+The `pretty-else` attribute can be set to an alternative tag name. It defaults to the empty string, and is ignored if `pretty-if` is `true`.
+
+```html
+<ol
+     pretty-if="@ordered"
+     pretty-else="ul">
+    @foreach (string item in myList)
+    {
+        <li>@item</li>
+    }
+</ol>
+```
+
 ## Features
 * **Deterministic Builds:** The DLL is byte-for-byte reproducible.
 * **Source Link:** Debug directly into the library source code from GitHub.
